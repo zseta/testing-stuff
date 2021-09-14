@@ -14,10 +14,8 @@ def lambda_handler(event, context):
     conn = psycopg2.connect(user=db_user, database=db_name, host=db_host, 
                             password=db_pass, port=db_port)
     
-    sql = "SELECT * FROM stocks_intraday WHERE symbol = 'MSFT' ORDER BY time DESC LIMIT 1"
-    
+    sql = "SELECT * FROM stocks_intraday ORDER BY time DESC LIMIT 10"
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    
     cursor.execute(sql)
     
     result = cursor.fetchall()
