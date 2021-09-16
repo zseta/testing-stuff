@@ -17,6 +17,7 @@ def lambda_handler(event, context):
     sql = "SELECT * FROM stocks_intraday ORDER BY time DESC LIMIT 10"
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(sql)
+    # nothin
     
     result = cursor.fetchall()
     list_of_dicts = []
